@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>澳門放狗易 Macau Dog Walk</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <div id="paw-warning-pill">🐾 載入數據中...</div>
+    
+    <select id="lang-switcher" class="lang-select" onchange="changeLanguage(this.value)">
+        <option value="zh_hk">繁</option>
+        <option value="zh_cn">简</option>
+        <option value="en">EN</option>
+        <option value="pt">PT</option>
+    </select>
+
+    <button class="fab-search" onclick="toggleSearch()">🔍</button>
+
+    <div id="search-popup" class="hidden">
+        <div class="popup-handle" onclick="toggleSearch()"></div>
+        <div class="popup-content">
+            <h4 data-i18n="filter_title" style="margin-bottom:12px; color:#333; text-align:center;">搜尋場所類別</h4>
+            <div class="filter-pills search-mode">
+                <button class="pill active" onclick="setFilter('all', this)" data-i18n="filter_all">全部</button>
+                <button class="pill" onclick="setFilter('park', this)" data-i18n="filter_park">遛狗區</button>
+                <button class="pill" onclick="setFilter('bin', this)" data-i18n="filter_bin">收集點</button>
+                <button class="pill" onclick="setFilter('kennel', this)" data-i18n="filter_kennel">市政狗房</button>
+                <button class="pill" onclick="setFilter('private', this)" data-i18n="filter_private">友善場所</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="bottom-sheet" class="hidden">
+        <div class="handle"></div>
+        <div id="park-info"></div>
+    </div>
+
+    <div id="list-container" class="list-hidden">
+        <div class="page-header">
+            <h2 data-i18n="list">設施清單</h2>
+        </div>
+        <div class="filter-pills list-mode">
+            <button class="pill active" onclick="setFilter('all', this)" data-i18n="filter_all">全部</button>
+            <button class="pill" onclick="setFilter('park', this)" data-i18n="filter_park">遛狗區</button>
+            <button class="pill" onclick="setFilter('bin', this)" data-i18n="filter_bin">收集點</button>
+            <button class="pill" onclick="setFilter('kennel', this)" data-i18n="filter_kennel">市政狗房</button>
+            <button class="pill" onclick="setFilter('private', this)" data-i18n="filter_private">友善場所</button>
+        </div>
+        <div id="park-list-content"></div>
+    </div>
+
+    <div id="timer-container" class="timer-hidden">
+        <div class="page-header">
+            <h2 data-i18n="timer">倒計時器</h2>
+        </div>
+        <div class="timer-content">
+            <div id="timer-setup">
+                <input type="number" id="timer-input" value="15" min="1" max="120">
+                <span class="timer-unit">MIN</span>
+            </div>
+            <div id="timer-display">15:00</div>
+            <div class="timer-actions">
+                <button id="timer-toggle-btn" onclick="toggleTimer()" data-i18n="start">開始</button>
+                <button id="timer-reset-btn" onclick="resetTimer()" data-i18n="reset">重設</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <div id="nav-timer" class="nav-item" onclick="showTimer()">
+            <span class="nav-icon">⏱️</span><span class="nav-label" data-i18n="nav_timer">計時</span>
+        </div>
+        <div id="nav-map" class="nav-item active" onclick="showMap()">
+            <span class="nav-icon">📍</span><span class="nav-label" data-i18n="nav_map">地圖</span>
+        </div>
+        <div id="nav-list" class="nav-item" onclick="toggleList()">
+            <span class="nav-icon">📜</span><span class="nav-label" data-i18n="nav_list">清單</span>
+        </div>
+    </nav>
+
+    <div id="ad-placeholder">BANNER AD SPACE (GOOGLE ADMOB)</div>
+
+    <audio id="alarm-sound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
