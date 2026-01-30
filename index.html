@@ -9,13 +9,12 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <div id="map"></div>
 
-    <div id="paw-warning-pill">🐾 載入數據中...</div>
-    
     <select id="lang-switcher" class="lang-select" onchange="changeLanguage(this.value)">
         <option value="zh_hk">繁</option>
         <option value="zh_cn">简</option>
@@ -28,7 +27,7 @@
     <div id="search-popup" class="hidden">
         <div class="popup-handle" onclick="toggleSearch()"></div>
         <div class="popup-content">
-            <h4 data-i18n="filter_title" style="margin-bottom:12px; color:#333; text-align:center;">搜尋場所類別</h4>
+            <h4 data-i18n="filter_title" style="margin-bottom:12px; text-align:center;">搜尋場所類別</h4>
             <div class="filter-pills search-mode">
                 <button class="pill active" onclick="setFilter('all', this)" data-i18n="filter_all">全部</button>
                 <button class="pill" onclick="setFilter('park', this)" data-i18n="filter_park">遛狗區</button>
@@ -45,9 +44,7 @@
     </div>
 
     <div id="list-container" class="list-hidden">
-        <div class="page-header">
-            <h2 data-i18n="list">設施清單</h2>
-        </div>
+        <div class="page-header"><h2 data-i18n="list">設施清單</h2></div>
         <div class="filter-pills list-mode">
             <button class="pill active" onclick="setFilter('all', this)" data-i18n="filter_all">全部</button>
             <button class="pill" onclick="setFilter('park', this)" data-i18n="filter_park">遛狗區</button>
@@ -59,9 +56,7 @@
     </div>
 
     <div id="timer-container" class="timer-hidden">
-        <div class="page-header">
-            <h2 data-i18n="timer">倒計時器</h2>
-        </div>
+        <div class="page-header"><h2 data-i18n="timer">倒計時器</h2></div>
         <div class="timer-content">
             <div id="timer-setup">
                 <input type="number" id="timer-input" value="15" min="1" max="120">
@@ -72,25 +67,45 @@
                 <button id="timer-toggle-btn" onclick="toggleTimer()" data-i18n="start">開始</button>
                 <button id="timer-reset-btn" onclick="resetTimer()" data-i18n="reset">重設</button>
             </div>
+
+            <div class="exercise-info-card">
+                <h4 data-i18n="ex_title">🐾 為何要每日放狗？</h4>
+                <p data-i18n="ex_desc">規律運動能有效防止狗狗體重超標，改善情緒穩定性，減少焦慮行為。建議成犬每日運動至少 30-60 分鐘。</p>
+                <div class="ex-stats">
+                    <div class="ex-stat-item"><span class="stat-icon">🎾</span><span data-i18n="ex_stat1">消耗熱量</span></div>
+                    <div class="ex-stat-item"><span class="stat-icon">🦴</span><span data-i18n="ex_stat2">關節健康</span></div>
+                    <div class="ex-stat-item"><span class="stat-icon">🌿</span><span data-i18n="ex_stat3">心理減壓</span></div>
+                </div>
+            </div>
+
+            <div class="ad-rectangle-container">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:250px"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXXX"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
         </div>
     </div>
 
-    <nav class="bottom-nav">
-        <div id="nav-timer" class="nav-item" onclick="showTimer()">
-            <span class="nav-icon">⏱️</span><span class="nav-label" data-i18n="nav_timer">計時</span>
-        </div>
-        <div id="nav-map" class="nav-item active" onclick="showMap()">
-            <span class="nav-icon">📍</span><span class="nav-label" data-i18n="nav_map">地圖</span>
-        </div>
-        <div id="nav-list" class="nav-item" onclick="toggleList()">
-            <span class="nav-icon">📜</span><span class="nav-label" data-i18n="nav_list">清單</span>
-        </div>
-    </nav>
-
-    <div id="ad-placeholder">BANNER AD SPACE (GOOGLE ADMOB)</div>
+    <div id="fixed-bottom-area">
+        <div id="ad-placeholder">BANNER AD SPACE (GOOGLE ADMOB)</div>
+        <nav class="bottom-nav">
+            <div id="nav-timer" class="nav-item" onclick="showTimer()">
+                <span class="nav-icon">⏱️</span><span class="nav-label" data-i18n="nav_timer">計時</span>
+            </div>
+            <div id="nav-map" class="nav-item active" onclick="showMap()">
+                <span class="nav-icon">📍</span><span class="nav-label" data-i18n="nav_map">地圖</span>
+            </div>
+            <div id="nav-list" class="nav-item" onclick="toggleList()">
+                <span class="nav-icon">📜</span><span class="nav-label" data-i18n="nav_list">清單</span>
+            </div>
+        </nav>
+    </div>
 
     <audio id="alarm-sound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
-
     <script src="app.js"></script>
 </body>
 </html>
