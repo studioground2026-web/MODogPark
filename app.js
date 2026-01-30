@@ -8,7 +8,7 @@ const i18n = {
         ex_title: "🐾 為何要每日放狗？", ex_desc: "規律運動能有效防止狗狗體重超標，改善情緒穩定性，減少焦慮行為。建議成犬每日運動至少 30-60 分鐘。", ex_stat1: "消耗熱量", ex_stat2: "關節健康", ex_stat3: "心理減壓",
         disc_title: "聲明及鳴謝",
         disc_body: "本應用程式之數據均源自<b>中華人民共和國澳門特別行政區政府</b>公開資料及其他第三方公開來源。數據僅供參考，場所之開放狀態可能隨時變動，數據更新未必能即時同步。開發者已盡力確保資訊準確，惟不保證其完整性、即時性或準確性。開發者對於因使用本程式資訊而引致的任何損失、錯誤或遺漏，概不承擔任何法律責任。用戶須自行承擔風險。地圖由 <a href='https://leafletjs.com/' target='_blank'>Leaflet</a> 提供。本聲明內容以繁體中文版本為準。",
-        contact_title: "聯繫我們", contact_body: "如有錯漏或建議，歡迎透過 Email 聯繫：[請手動替換]", close: "關閉"
+        contact_title: "聯繫我們", contact_body: "如有錯漏或建議，歡迎透過 Email 聯繫：studioground2026@gmail.com", close: "關閉"
     },
     zh_cn: { 
         list: "设施清单", timer: "计时器", filter_title: "搜索场所类别", filter_all: "全部", filter_park: "遛狗区", filter_bin: "狗粪收集点", filter_kennel: "市政狗房", filter_private: "宠物友好场所", 
@@ -16,7 +16,7 @@ const i18n = {
         ex_title: "🐾 为什么要每日溜狗？", ex_desc: "规律運動能有效防止狗狗体重超标，改善情绪稳定性，减少焦虑行為。建议成犬每日运动至少 30-60 分钟。", ex_stat1: "消耗热量", ex_stat2: "关节健康", ex_stat3: "心理减压",
         disc_title: "声明及鸣谢",
         disc_body: "本应用程序的数据均源自<b>中华人民共和国澳门特别行政区政府</b>公开资料及其他第三方公开来源。数据仅供参考，场所之开放状态可能随时变动，数据更新未必能即时同步。开发者已尽力确保信息准确，但不保证其完整性、及时性 or 准确性。对于因使用本程序信息而引致的任何损失、错误 or 遗漏，概不承担法律责任。地图由 <a href='https://leafletjs.com/' target='_blank'>Leaflet</a> 提供。本声明内容以繁体中文版本为准。",
-        contact_title: "联系我们", contact_body: "如有错漏或建议，欢迎透過 Email 联系：[請手動替換]", close: "关闭"
+        contact_title: "联系我们", contact_body: "如有错漏或建议，欢迎透過 Email 联系：studioground2026@gmail.com", close: "关闭"
     },
     en: { 
         list: "Facilities List", timer: "Timer", filter_title: "Search Categories", filter_all: "All", filter_park: "Dog Parks", filter_bin: "Dog Feces Bins", filter_kennel: "Municipal Kennel", filter_private: "Dog-friendly Locations", 
@@ -24,7 +24,7 @@ const i18n = {
         ex_title: "🐾 Why walk daily?", ex_desc: "Regular exercise prevents obesity and improves emotional stability. Recommended 30-60 mins daily for adult dogs.", ex_stat1: "Calories", ex_stat2: "Joint Health", ex_stat3: "Mental Relief",
         disc_title: "Disclaimer & Credits",
         disc_body: "All data is sourced from the <b>Macao SAR Government of the People's Republic of China</b> public data. Data is for reference only; status of facilities may change, and updates may not be instantaneous. The developer is not liable for any errors or damages. Map by <a href='https://leafletjs.com/' target='_blank'>Leaflet</a>. The Traditional Chinese version shall prevail.",
-        contact_title: "Contact", contact_body: "For suggestions, please reach us via Email: [請手動替換]", close: "Close"
+        contact_title: "Contact", contact_body: "For suggestions, please reach us via Email: studioground2026@gmail.com", close: "Close"
     },
     pt: { 
         list: "Lista de Instalações", timer: "Temporizador", filter_title: "Categorias", filter_all: "Tudo", filter_park: "Zonas de Cães", filter_bin: "Colectores", filter_kennel: "Canil Municipal", filter_private: "Amigo dos Cães", 
@@ -32,7 +32,7 @@ const i18n = {
         ex_title: "🐾 Porquê passear o cão?", ex_desc: "O exercício regular previne o excesso de peso e melhora a estabilidade emocional. Recomenda-se 30-60 min por dia.", ex_stat1: "Calorias", ex_stat2: "Articulações", ex_stat3: "Anti-stress",
         disc_title: "Exoneração e Agradecimentos",
         disc_body: "Todos os dados são provenientes do <b>Governo da Região Administrativa Especial de Macau da República Popular da China</b>. Os dados são apenas para referência. O programador não assume responsabilidade por erros. Tecnologia por <a href='https://leafletjs.com/' target='_blank'>Leaflet</a>. <b>A versão em português é gerada por computador. O programador reconhece profundamente o estatuto do português como língua oficial na Região Administrativa Especial de Macau da República Popular da China. Pedimos desculpa por eventuais erros de tradução.</b> Em caso de discrepância, prevalecerá a versão em chinês tradicional.",
-        contact_title: "Contacto", contact_body: "Para sugestões, contacte-nos por Email: [請手動替換]", close: "Fechar"
+        contact_title: "Contacto", contact_body: "Para sugestões, contacte-nos por Email: studioground2026@gmail.com", close: "Fechar"
     }
 };
 
@@ -169,4 +169,5 @@ function changeLanguage(lang) {
 
 function getDist(l1, n1, l2, n2) { const R = 6371; const dLat = (l2-l1)*Math.PI/180; const dLon = (n2-n1)*Math.PI/180; const a = Math.sin(dLat/2)**2 + Math.cos(l1*Math.PI/180)*Math.cos(l2*Math.PI/180)*Math.sin(dLon/2)**2; return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); }
 function setActiveNav(id) { document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active')); document.getElementById(id).classList.add('active'); }
+
 map.on('click', () => { document.getElementById('bottom-sheet').classList.add('hidden'); document.getElementById('search-popup').classList.add('hidden'); });
