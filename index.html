@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>澳門放狗易 Macau Dog Walk</title>
+    <title>澳門放狗易 DogWalk Easy Macao</title>
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
@@ -23,6 +23,7 @@
     </select>
 
     <button class="fab-search" onclick="toggleSearch()">🔍</button>
+    <button class="fab-info" onclick="toggleDisclaimer()">!</button>
 
     <div id="search-popup" class="hidden">
         <div class="popup-handle" onclick="toggleSearch()"></div>
@@ -31,9 +32,9 @@
             <div class="filter-pills search-mode">
                 <button class="pill active" onclick="setFilter('all', this)" data-i18n="filter_all">全部</button>
                 <button class="pill" onclick="setFilter('park', this)" data-i18n="filter_park">遛狗區</button>
-                <button class="pill" onclick="setFilter('bin', this)" data-i18n="filter_bin">收集點</button>
+                <button class="pill" onclick="setFilter('bin', this)" data-i18n="filter_bin">狗糞收集點</button>
                 <button class="pill" onclick="setFilter('kennel', this)" data-i18n="filter_kennel">市政狗房</button>
-                <button class="pill" onclick="setFilter('private', this)" data-i18n="filter_private">友善場所</button>
+                <button class="pill" onclick="setFilter('private', this)" data-i18n="filter_private">寵物友善場所</button>
             </div>
         </div>
     </div>
@@ -48,9 +49,9 @@
         <div class="filter-pills list-mode">
             <button class="pill active" onclick="setFilter('all', this)" data-i18n="filter_all">全部</button>
             <button class="pill" onclick="setFilter('park', this)" data-i18n="filter_park">遛狗區</button>
-            <button class="pill" onclick="setFilter('bin', this)" data-i18n="filter_bin">收集點</button>
+            <button class="pill" onclick="setFilter('bin', this)" data-i18n="filter_bin">狗糞收集點</button>
             <button class="pill" onclick="setFilter('kennel', this)" data-i18n="filter_kennel">市政狗房</button>
-            <button class="pill" onclick="setFilter('private', this)" data-i18n="filter_private">友善場所</button>
+            <button class="pill" onclick="setFilter('private', this)" data-i18n="filter_private">寵物友善場所</button>
         </div>
         <div id="park-list-content"></div>
     </div>
@@ -59,10 +60,10 @@
         <div class="page-header"><h2 data-i18n="timer">倒計時器</h2></div>
         <div class="timer-content">
             <div id="timer-setup">
-                <input type="number" id="timer-input" value="15" min="1" max="120">
+                <input type="number" id="timer-input" value="30" min="1" max="120" inputmode="numeric" pattern="[0-9]*">
                 <span class="timer-unit">MIN</span>
             </div>
-            <div id="timer-display">15:00</div>
+            <div id="timer-display">30:00</div>
             <div class="timer-actions">
                 <button id="timer-toggle-btn" onclick="toggleTimer()" data-i18n="start">開始</button>
                 <button id="timer-reset-btn" onclick="resetTimer()" data-i18n="reset">重設</button>
@@ -83,10 +84,19 @@
                      style="display:inline-block;width:300px;height:250px"
                      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
                      data-ad-slot="XXXXXXXXXX"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
+        </div>
+    </div>
+
+    <div id="disclaimer-modal" class="modal-overlay hidden" onclick="toggleDisclaimer()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 data-i18n="disc_title">聲明及鳴謝</h3>
+            <div id="disc-body" class="disc-text"></div>
+            <hr>
+            <h4 data-i18n="contact_title">聯繫我們</h4>
+            <p id="contact-text" class="disc-text"></p>
+            <button class="btn-close-modal" onclick="toggleDisclaimer()" data-i18n="close">關閉</button>
         </div>
     </div>
 
