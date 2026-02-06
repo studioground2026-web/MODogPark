@@ -44,6 +44,16 @@
         <div id="park-info"></div>
     </div>
 
+    <div id="nav-selector" class="modal-overlay hidden" onclick="closeNavSelector()">
+        <div class="action-sheet" onclick="event.stopPropagation()">
+            <h4 data-i18n="nav_choose">選擇地圖導航</h4>
+            <button class="action-btn" onclick="goToMap('google')">Google Maps</button>
+            <button class="action-btn" onclick="goToMap('apple')">Apple Maps (iOS)</button>
+            <button class="action-btn" onclick="goToMap('amap')">高德地圖 / Amap</button>
+            <button class="action-btn cancel" onclick="closeNavSelector()" data-i18n="close">關閉</button>
+        </div>
+    </div>
+
     <div id="list-container" class="list-hidden">
         <div class="page-header"><h2 data-i18n="list">設施清單</h2></div>
         <div class="filter-pills list-mode">
