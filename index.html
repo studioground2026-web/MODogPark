@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>澳門放狗易 DogWalk Easy Macao</title>
-    
+    <title>DogWalk Easy Macao</title>
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -12,29 +12,24 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div id="top-ad-area">
+        <div id="ad-placeholder">BANNER AD SPACE (GOOGLE ADMOB)</div>
+    </div>
 
     <div id="map"></div>
 
-    <select id="lang-switcher" class="lang-select" onchange="changeLanguage(this.value)">
-        <option value="zh_hk">繁</option>
-        <option value="zh_cn">简</option>
-        <option value="en">EN</option>
-        <option value="pt">PT</option>
-    </select>
-
-    <button class="fab-search" onclick="toggleSearch()">🔍</button>
-    <button class="fab-info" onclick="toggleDisclaimer()">!</button>
+    <button class="fab-search" onclick="toggleSearch()">&#128269;</button>
 
     <div id="search-popup" class="hidden">
         <div class="popup-handle" onclick="toggleSearch()"></div>
         <div class="popup-content">
-            <h4 data-i18n="filter_title" style="margin-bottom:12px; text-align:center;">搜尋場所類別</h4>
+            <h4 data-i18n="filter_title" style="margin-bottom:12px; text-align:center;">Search Categories</h4>
             <div class="filter-pills search-mode">
-                <button class="pill active" onclick="setFilter('all', this)" data-i18n="filter_all">全部</button>
-                <button class="pill" onclick="setFilter('park', this)" data-i18n="filter_park">遛狗區</button>
-                <button class="pill" onclick="setFilter('bin', this)" data-i18n="filter_bin">狗糞收集點</button>
-                <button class="pill" onclick="setFilter('kennel', this)" data-i18n="filter_kennel">市政狗房</button>
-                <button class="pill" onclick="setFilter('private', this)" data-i18n="filter_private">寵物友善場所</button>
+                <button class="pill active" onclick="setFilter('all', this)" data-i18n="filter_all">All</button>
+                <button class="pill" onclick="setFilter('park', this)" data-i18n="filter_park">Dog Parks</button>
+                <button class="pill" onclick="setFilter('bin', this)" data-i18n="filter_bin">Dog Feces Bins</button>
+                <button class="pill" onclick="setFilter('kennel', this)" data-i18n="filter_kennel">Municipal Kennel</button>
+                <button class="pill" onclick="setFilter('private', this)" data-i18n="filter_private">Dog-friendly Locations</button>
             </div>
         </div>
     </div>
@@ -46,28 +41,28 @@
 
     <div id="nav-selector" class="modal-overlay hidden" onclick="closeNavSelector()">
         <div class="action-sheet" onclick="event.stopPropagation()">
-            <h4 data-i18n="nav_choose">選擇地圖導航</h4>
+            <h4 data-i18n="nav_choose">Choose Navigation</h4>
             <button class="action-btn" onclick="goToMap('google')">Google Maps</button>
             <button class="action-btn" onclick="goToMap('apple')">Apple Maps (iOS)</button>
-            <button class="action-btn" onclick="goToMap('amap')">高德地圖 / Amap</button>
-            <button class="action-btn cancel" onclick="closeNavSelector()" data-i18n="close">關閉</button>
+            <button class="action-btn" onclick="goToMap('amap')">Amap</button>
+            <button class="action-btn cancel" onclick="closeNavSelector()" data-i18n="close">Close</button>
         </div>
     </div>
 
     <div id="list-container" class="list-hidden">
-        <div class="page-header"><h2 data-i18n="list">設施清單</h2></div>
+        <div class="page-header"><h2 data-i18n="list">Facilities List</h2></div>
         <div class="filter-pills list-mode">
-            <button class="pill active" onclick="setFilter('all', this)" data-i18n="filter_all">全部</button>
-            <button class="pill" onclick="setFilter('park', this)" data-i18n="filter_park">遛狗區</button>
-            <button class="pill" onclick="setFilter('bin', this)" data-i18n="filter_bin">狗糞收集點</button>
-            <button class="pill" onclick="setFilter('kennel', this)" data-i18n="filter_kennel">市政狗房</button>
-            <button class="pill" onclick="setFilter('private', this)" data-i18n="filter_private">寵物友善場所</button>
+            <button class="pill active" onclick="setFilter('all', this)" data-i18n="filter_all">All</button>
+            <button class="pill" onclick="setFilter('park', this)" data-i18n="filter_park">Dog Parks</button>
+            <button class="pill" onclick="setFilter('bin', this)" data-i18n="filter_bin">Dog Feces Bins</button>
+            <button class="pill" onclick="setFilter('kennel', this)" data-i18n="filter_kennel">Municipal Kennel</button>
+            <button class="pill" onclick="setFilter('private', this)" data-i18n="filter_private">Dog-friendly Locations</button>
         </div>
         <div id="park-list-content"></div>
     </div>
 
     <div id="timer-container" class="timer-hidden">
-        <div class="page-header"><h2 data-i18n="timer">倒計時器</h2></div>
+        <div class="page-header"><h2 data-i18n="timer">Timer</h2></div>
         <div class="timer-content">
             <div id="timer-setup">
                 <input type="number" id="timer-input" value="30" min="1" max="120" inputmode="numeric" pattern="[0-9]*">
@@ -75,17 +70,17 @@
             </div>
             <div id="timer-display">30:00</div>
             <div class="timer-actions">
-                <button id="timer-toggle-btn" onclick="toggleTimer()" data-i18n="start">開始</button>
-                <button id="timer-reset-btn" onclick="resetTimer()" data-i18n="reset">重設</button>
+                <button id="timer-toggle-btn" onclick="toggleTimer()" data-i18n="start">Start</button>
+                <button id="timer-reset-btn" onclick="resetTimer()" data-i18n="reset">Reset</button>
             </div>
 
             <div class="exercise-info-card">
-                <h4 data-i18n="ex_title">🐾 為何要每日放狗？</h4>
-                <p data-i18n="ex_desc">規律運動能有效防止狗狗體重超標，改善情緒穩定性，減少焦慮行為。建議成犬每日運動至少 30-60 分鐘。</p>
+                <h4 data-i18n="ex_title">Why walk daily?</h4>
+                <p data-i18n="ex_desc">Regular exercise helps keep dogs healthy and calm.</p>
                 <div class="ex-stats">
-                    <div class="ex-stat-item"><span class="stat-icon">🎾</span><span data-i18n="ex_stat1">消耗熱量</span></div>
-                    <div class="ex-stat-item"><span class="stat-icon">🦴</span><span data-i18n="ex_stat2">關節健康</span></div>
-                    <div class="ex-stat-item"><span class="stat-icon">🌿</span><span data-i18n="ex_stat3">心理減壓</span></div>
+                    <div class="ex-stat-item"><span class="stat-icon">1</span><span data-i18n="ex_stat1">Calories</span></div>
+                    <div class="ex-stat-item"><span class="stat-icon">2</span><span data-i18n="ex_stat2">Joint Health</span></div>
+                    <div class="ex-stat-item"><span class="stat-icon">3</span><span data-i18n="ex_stat3">Mental Relief</span></div>
                 </div>
             </div>
 
@@ -99,28 +94,50 @@
         </div>
     </div>
 
-    <div id="disclaimer-modal" class="modal-overlay hidden" onclick="toggleDisclaimer()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <h3 data-i18n="disc_title">聲明及鳴謝</h3>
-            <div id="disc-body" class="disc-text"></div>
-            <hr>
-            <h4 data-i18n="contact_title">聯繫我們</h4>
-            <p id="contact-text" class="disc-text"></p>
-            <button class="btn-close-modal" onclick="toggleDisclaimer()" data-i18n="close">關閉</button>
+    <div id="settings-container" class="settings-hidden">
+        <div class="page-header"><h2 id="settings-title">Settings</h2></div>
+        <div class="settings-content">
+            <div class="setting-item">
+                <label for="settings-lang-switcher" id="settings-lang-label">Language</label>
+                <select id="settings-lang-switcher" class="lang-select" onchange="changeLanguage(this.value)">
+                    <option value="zh_hk">&#32321;</option>
+                    <option value="zh_cn">&#31616;</option>
+                    <option value="en">EN</option>
+                    <option value="pt">PT</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <label for="dark-mode-toggle" id="settings-theme-label">Dark Mode</label>
+                <label class="switch">
+                    <input id="dark-mode-toggle" type="checkbox" onchange="toggleDarkMode(this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="settings-disclaimer">
+                <h3 data-i18n="disc_title">Disclaimer & Credits</h3>
+                <div id="settings-disc-body" class="disc-text"></div>
+                <hr>
+                <h4 data-i18n="contact_title">Contact</h4>
+                <p id="settings-contact-text" class="disc-text"></p>
+            </div>
         </div>
     </div>
 
     <div id="fixed-bottom-area">
-        <div id="ad-placeholder">BANNER AD SPACE (GOOGLE ADMOB)</div>
         <nav class="bottom-nav">
             <div id="nav-timer" class="nav-item" onclick="showTimer()">
-                <span class="nav-icon">⏱️</span><span class="nav-label" data-i18n="nav_timer">計時</span>
+                <span class="nav-icon">&#9201;&#65039;</span><span class="nav-label" data-i18n="nav_timer">Timer</span>
             </div>
             <div id="nav-map" class="nav-item active" onclick="showMap()">
-                <span class="nav-icon">📍</span><span class="nav-label" data-i18n="nav_map">地圖</span>
+                <span class="nav-icon">&#128205;</span><span class="nav-label" data-i18n="nav_map">Map</span>
             </div>
             <div id="nav-list" class="nav-item" onclick="toggleList()">
-                <span class="nav-icon">📜</span><span class="nav-label" data-i18n="nav_list">清單</span>
+                <span class="nav-icon">&#128220;</span><span class="nav-label" data-i18n="nav_list">List</span>
+            </div>
+            <div id="nav-settings" class="nav-item" onclick="showSettings()">
+                <span class="nav-icon">&#9881;&#65039;</span><span class="nav-label" id="nav-settings-label">Settings</span>
             </div>
         </nav>
     </div>
